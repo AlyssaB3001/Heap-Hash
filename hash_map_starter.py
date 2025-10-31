@@ -32,7 +32,10 @@ class HashMap:
         bucket = self._buckets[i]
         #TODO: Scan bucket; if key found, return value. Otherwise, return None.
         #Add code here – remove the pass
-        pass
+        if key == bucket[i]:
+            return key
+        else:
+            return None
 
     def remove(self, key: Any) -> bool:
         """Remove key if present; return True if removed else False."""
