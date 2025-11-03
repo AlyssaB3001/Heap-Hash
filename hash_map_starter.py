@@ -25,11 +25,12 @@ class HashMap:
         #TODO: If key exists in bucket, update its value. Else append and increase _size.
          #Add code here – remove pass
          #I found example code on GeeksforGeeks and tried this.
-        for i in bucket:
-            if key == bucket[i]:
+        for i, (record_key, _) in enumerate(bucket):
+            if key == record_key:
                 bucket[i] = (key, value)
                 return
         bucket.append((key, value))
+        self._size +=1
 
     def get(self, key: Any) -> Optional[Any]:
         """Return value for key or None if not found."""
@@ -37,10 +38,10 @@ class HashMap:
         bucket = self._buckets[i]
         #TODO: Scan bucket; if key found, return value. Otherwise, return None.
         #I found example code on GeeksforGeeks and tried this.        
-        for i, value in bucket:
-            if key == bucket[i]:
+        for record_key, value in bucket:
+            if key == record_key:
                 return value
-        return "No value found"
+        return None
 
 
 
@@ -50,10 +51,12 @@ class HashMap:
         bucket = self._buckets[i]
         #TODO: Find key, pop it from bucket, decrease _size, return True; else False.
         #I found example code on GeeksforGeeks and tried this. 
-        for i in bucket:
-            if key == bucket[i]:
-                bucket.pop(key)
-                return
+        for i, (record_key, _) in enumerate(bucket):
+            if key == record_key:
+                bucket.pop(i)
+                self._size -= 1
+                return True
+        return False    
 
 
 if __name__ == "__main__":
