@@ -28,17 +28,26 @@ class MinHeap:
         #TODO: append x; then sift-up while parent > x. Swap as needed.
         self._a.append(x)
         i = len(self._a) -1
-        while i > 0 and self._parent() > self._a[i]:
-            self._a[i], self._a[(i - 1) // 2] = self._a[(i - 1) // 2], self._a[i]
-            i = (i - 1) // 2
+        while i > 0:
+            parent = self._parent(i)
+            if self._a[parent] > self._a[i]:
+                self._a[i], self._a[(i - 1) // 2] = self._a[(i - 1) // 2], self._a[i]
+                i = parent
+            else:
+                break    
 
     def pop(self) -> int:
         """Remove and return smallest element."""
         if not self._a:
             raise IndexError("pop from empty heap")
         #TODO: store min_val (root), move last to root, and sift-down.
-        # Add code here – remove the pass
-        pass
+        root = self._a[0]
+        last =self._a.pop()
+
+        if self._a:
+            self._a[0] = last
+            self._sift_down(0)
+        return root
 
     def _sift_down(self, i: int) -> None:
         n = len(self._a)
