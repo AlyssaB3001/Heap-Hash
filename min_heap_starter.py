@@ -26,9 +26,9 @@ class MinHeap:
 
     def push(self, x: int) -> None:
         #TODO: append x; then sift-up while parent > x. Swap as needed.
-        self._a.append(int)
+        self._a.append(x)
         i = len(self._a) -1
-        while i > 0 and self._a[(i - 1) // 2] > self._a[i]:
+        while i > 0 and self._parent() > self._a[i]:
             self._a[i], self._a[(i - 1) // 2] = self._a[(i - 1) // 2], self._a[i]
             i = (i - 1) // 2
 
