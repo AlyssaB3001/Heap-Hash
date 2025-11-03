@@ -24,26 +24,36 @@ class HashMap:
         bucket = self._buckets[i]
         #TODO: If key exists in bucket, update its value. Else append and increase _size.
          #Add code here – remove pass
-        pass
+         #I found example code on GeeksforGeeks and tried this.
+        for i in bucket:
+            if key == bucket[i]:
+                bucket[i] = (key, value)
+                return
+        bucket.append((key, value))
 
     def get(self, key: Any) -> Optional[Any]:
         """Return value for key or None if not found."""
         i = self._index(key)
         bucket = self._buckets[i]
         #TODO: Scan bucket; if key found, return value. Otherwise, return None.
-        #Add code here – remove the pass
-        if key == bucket[i]:
-            return key
-        else:
-            return None
+        #I found example code on GeeksforGeeks and tried this.        
+        for i, value in bucket:
+            if key == bucket[i]:
+                return value
+        return "No value found"
+
+
 
     def remove(self, key: Any) -> bool:
         """Remove key if present; return True if removed else False."""
         i = self._index(key)
         bucket = self._buckets[i]
         #TODO: Find key, pop it from bucket, decrease _size, return True; else False.
-        #Add code here – remove the pass
-        pass
+        #I found example code on GeeksforGeeks and tried this. 
+        for i in bucket:
+            if key == bucket[i]:
+                bucket.pop(key)
+                return
 
 
 if __name__ == "__main__":
