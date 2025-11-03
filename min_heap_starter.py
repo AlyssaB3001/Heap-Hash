@@ -26,9 +26,11 @@ class MinHeap:
 
     def push(self, x: int) -> None:
         #TODO: append x; then sift-up while parent > x. Swap as needed.
-        #Add code here – remove the pass
-       
-        pass
+        self._a.append(int)
+        i = len(self._a) -1
+        while i > 0 and self._a[(i - 1) // 2] > self._a[i]:
+            self._a[i], self._a[(i - 1) // 2] = self._a[(i - 1) // 2], self._a[i]
+            i = (i - 1) // 2
 
     def pop(self) -> int:
         """Remove and return smallest element."""
